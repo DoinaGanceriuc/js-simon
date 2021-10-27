@@ -14,3 +14,22 @@
 */
 
 
+let alertNumbers;
+let counter = 5;
+
+const randomNumber = setInterval(generateRandomNumbers, 1000);
+
+
+
+
+function generateRandomNumbers() {
+    alertNumbers = Math.floor(Math.random() * 100);
+    alert(alertNumbers);
+    counter--
+    console.log(alertNumbers);
+    //console.log(counter);
+    if(counter == 0) {
+       clearInterval(randomNumber)
+    }
+
+}
