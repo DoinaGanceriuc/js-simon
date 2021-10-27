@@ -16,8 +16,10 @@
 
 let alertNumbers;
 let counter = 5;
+let seconds = 30;
 
 const randomNumber = setInterval(generateRandomNumbers, 1000);
+const timer = setInterval(passSeconds, 1000);
 
 
 
@@ -32,4 +34,15 @@ function generateRandomNumbers() {
        clearInterval(randomNumber)
     }
 
+}
+
+function passSeconds() {
+    seconds--
+    // console.log(seconds);
+    document.getElementById("seconds").innerHTML = seconds
+
+    if(seconds == 0) {
+       clearInterval(timer)
+        document.getElementById("seconds").innerHTML = ""
+    }
 }
