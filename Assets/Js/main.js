@@ -13,7 +13,7 @@
 -if/else
 */
 
-
+// inizializzazione delle variabili
 let alertNumbers;
 let counter = 5;
 let seconds = 30;
@@ -21,10 +21,14 @@ let timer;
 let insertNumbers;
 const randomListNumbers = [];
 const userAddNumbers = [];
+const guessedNumbers = [];
 
+// selezionare elementi dal DOM
 const randomelement = document.getElementById("random");
 const startElement = document.getElementById("start");
 
+
+// timing functions
 const showRandomNumber = setInterval(showNumbers, 2000);
 const hideRandomNumber = setInterval(hideNumbers, 4000);
 
@@ -32,14 +36,15 @@ const hideRandomNumber = setInterval(hideNumbers, 4000);
 
 
 function generateRandomNumbers() {
-    for (let i = 0; i < 5; i++) {
-   alertNumbers = Math.floor(Math.random() * 100);
+    let i = 0;
+    while (randomListNumbers.length < 5) {
+   alertNumbers = Math.floor(Math.random() * 100) + 1;
    //console.log(alertNumbers)
    if(!randomListNumbers.includes(alertNumbers)) {
         randomListNumbers.push(alertNumbers)
         //console.log(randomListNumbers);
     } 
-    
+    i++
   }
   return randomListNumbers
 }
@@ -56,7 +61,7 @@ function hideNumbers() {
     randomelement.style.display = "none"
 }
 
-
+// evento listener
 startElement.addEventListener("click", function() {
     timer = setInterval(function (){
      seconds--
@@ -77,9 +82,30 @@ startElement.addEventListener("click", function() {
     for (let i = 0; i < 5; i++) {
    insertNumbers = Number(prompt("inserisci ogni numero che hai visto"));
    if(!userAddNumbers.includes(insertNumbers)) {
-        userAddNumbers.push(insertNumbers)
-        console.log(userAddNumbers);
+        userAddNumbers.push(insertNumbers)        
     }
     
 }
+    userAddNumbers.forEach(singleNumber => {
+    console.log(singleNumber);
+    if (randomNumbers.includes(singleNumber)) {
+        guessedNumbers.push(singleNumber)
+        console.log("numero corretto");
+        //console.log(guessedNumbers);
+        document.getElementById("result").innerHTML = `i numeri inseriti correttamente sono i seguenti: ${guessedNumbers}`;
+    }
+   
+});
 }
+
+
+
+
+/* function checkNumbers(singleNumber) {
+    if (randomNumbers.includes(singleNumber)) {
+    //guessedNumbers.push(singleNumber)
+    console.log(guessedNumbers);
+} else {
+    console.log("numero falso");
+}
+} */

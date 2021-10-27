@@ -1,13 +1,10 @@
+/* reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-/* body {
-  background-color: #000;
-} */
-
+/* container */
 .container {
   margin: 5rem auto;
   display: flex;
@@ -15,6 +12,3 @@
   align-items: center;
   flex-direction: column;
 }
-/* h1 {
-  color: #fff;
-} */
